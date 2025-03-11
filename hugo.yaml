@@ -1,4 +1,4 @@
-baseURL: https://example.org/
+baseURL: https://slides.andrewpyle.dev/
 languageCode: en-us
-title: My New Hugo Site
+title: Slides
 theme: ["PaperMod"]
