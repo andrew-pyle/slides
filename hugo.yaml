@@ -1,4 +1,16 @@
 baseURL: https://slides.andrewpyle.dev/
 languageCode: en-us
-title: Slides
+author: Andrew Pyle
+# copyright: |
+#   Copyright © 2025 [Andrew Pyle](https://andrewpyle.dev)
+enableRobotsTXT: true
+enableGitInfo: true
+title: Presentations
 theme: ["PaperMod"]
+params:
+  ShowToc: true
+  ShowBreadCrumbs: true
+  footer:
+    HideCopyright: true
+  #   text: |
+  #     The content of this site is licensed under the [MIT License](https://choosealicense.com/licenses/mit/)
