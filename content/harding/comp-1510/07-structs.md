@@ -1,7 +1,5 @@
 ---
-layout: page
-prev: architecture
-next: classes
+slug: structs
 ---
 
 # Structs

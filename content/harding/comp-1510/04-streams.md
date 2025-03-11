@@ -1,6 +1,5 @@
 ---
-layout: page
-next: files
+slug: streams
 ---
 
 # Streams

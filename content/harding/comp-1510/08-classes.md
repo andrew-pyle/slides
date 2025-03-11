@@ -1,6 +1,5 @@
 ---
-layout: page
-prev: structs
+slug: classes
 ---
 
 # Classes

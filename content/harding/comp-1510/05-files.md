@@ -1,7 +1,5 @@
 ---
-layout: page
-prev: streams
-next: architecture
+slug: files
 ---
 
 # File Input/Output

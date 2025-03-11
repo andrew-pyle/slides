@@ -1,7 +1,5 @@
 ---
-layout: page
-prev: files
-next: structs
+slug: architecture
 ---
 
 # Software Architecture
