@@ -51,8 +51,8 @@ flowchart LR
 | Attribute     | Description                                                                                                                                 | Example                                              |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
 | Filename      | The unique identifier of the file. Usually has an **extension** indicating the type of data the file contains.                              | pokemon.txt                                          |
-| Size          | The number of bytes in the file                                                                                                             | 1,024 bytes                                          |
-| Last Modified | The operating system keeps track of the date when the file was most recently changed                                                        | 28 Feb 2025 10:09 AM                                 |
+| Size          | The number of **bytes** in the file                                                                                                         | 1,024 bytes                                          |
+| Last Modified | The operating system keeps track of the **date** when the file was most recently changed                                                    | 28 Feb 2025 10:09 AM                                 |
 | Permissions   | The operating system can allow only certain **users** or **processes** from accessing a file. Certain **operations** can be restricted too. | Allowed Users: admins; Allowed Operations: read-only |
 
 ### Binary vs. Text Files
@@ -87,39 +87,26 @@ flowchart LR
 
 The contents of a text file represent characters, according to an **encoding**, like ASCII or UTF-8. These files are human-readable. Opening a text file in a text editor will result in human-readable characters, because the text editor applies the encoding, transforming the bytes into characters.
 
-```mermaid
-flowchart LR
-    A@{ shape: card, label: "**Text File**
-        01000001 01110000 01110000 01101100
-        01100101 01110011 00100000 01100001
-        01110010 01100101 00100000 01110100
-        01100001 01110011 01110100 01111001
-        00100001
-    " } --Rendered by Text Editor-->
-    B@{ shape: win-pane, label: "Apples are tasty!" }
+```goat
+          Text File                          Decoded
+  .--------------------------.       .-----------------------.
+ | 01000001 01110000 01110000 |     |   a        p        p   |
+ | 01101100 01100101 01110011 |     |   l        e        s   |
+ | 00100000 01100001 01110010 +---->| space      a        r   +-.
+ | 01100101 00100000 01110100 |     |   e      space      t   |  |
+ | 01100001 01110011 01110100 |     |   a        s        t   |  |
+ | 01111001 00100001          |     |   y        !            |  |
+  '--------------------------'       '-----------------------'   |
+                                                                 |
+                            Text Editor                          |
+                     .----------------------.                    |
+                     .               ◽️ - x |                    |
+                     .----------------------.                    |
+                     |  |                   |                    |
+                     |1 | Apples are tasty! |<------------------'
+                     |2 |                   |
+                     '----------------------'
 ```
-
-##### Example Encoding
-
-|  Binary  | Text  |
-| :------: | :---: |
-| 01000001 |   A   |
-| 01110000 |   p   |
-| 01110000 |   p   |
-| 01101100 |   l   |
-| 01100101 |   e   |
-| 01110011 |   s   |
-| 00100000 | space |
-| 01100001 |   a   |
-| 01110010 |   r   |
-| 01100101 |   e   |
-| 00100000 | space |
-| 01110100 |   t   |
-| 01100001 |   a   |
-| 01110011 |   s   |
-| 01110100 |   t   |
-| 01111001 |   y   |
-| 00100001 |   !   |
 
 ##### Text File Examples
 

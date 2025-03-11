@@ -5,6 +5,14 @@
     See: https://github.com/mermaid-js/mermaid/issues/2644#issuecomment-2313201033
 -->
 
+<!-- Fix GoAT diagrams -->
+<style>
+    .goat svg {
+        font-size: 0.85rem;
+    }
+</style>
+
+<!-- Mermaid -->
 {{ if .Store.Get "hasMermaid" }}
 <script type="module">
     import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
