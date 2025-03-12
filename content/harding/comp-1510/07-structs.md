@@ -420,3 +420,71 @@ int main() {
   cout << bulbasaur.cry << endl; // Prints "Iiiiivy-saur"
 }
 ```
+
+## Example Program: Interactive Pokémon Team
+
+1. Initialize a team of Pokémon
+1. User selects a Pokémon in the team to "launch"
+1. "Launch" the selected Pokémon (output the Pokemon's cry).
+
+```cpp
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+// Structs go below includes
+
+struct Pokemon {
+    int number;
+    string name;
+    string type;
+    string cry;
+};
+
+// stucts go above functions
+
+// Print each Pokemon in the with a number prefix
+void print_team(const vector<Pokemon> pokemon_team) {
+    for (int i = 0; i < pokemon_team.size(); i++) {
+        cout << i+1 << ". " << pokemon_team.at(i).name << endl;
+    }
+}
+
+// Returns Pokemon at 1-based index
+Pokemon select_pokemon(const vector<Pokemon> pokemon_team, int num) {
+    Pokemon selected_pokemon = pokemon_team.at(num-1);
+    return selected_pokemon;
+}
+
+// Print the "Launch" output for the given Pokemon
+void launch(Pokemon &p) {
+    cout << "GO! " << p.name << ". " << p.cry << endl;
+}
+
+// Create a Pokemon team. Launch a certain Pokemon from the team.
+int main()
+{
+    // 6 or less Pokemon
+    vector<Pokemon> team;
+
+    team.push_back({ 1,"bulbasaur", "grass/poison", "bulbaaaaaaaa" }); // 1
+    team.push_back({ 13, "Weedle", "Bug/Poison", "dllllllll" });       // 2
+    team.push_back({ 2, "Ivysaur", "Grass/Poison", "Iiiiivy-saur" });  // 3
+    team.push_back({ 11,"Caterpie", "Bug", "cater-cater" });           // 4
+    team.push_back({ 4,"charmander", "fire", "char-char" });           // 5
+
+    // Print Entire team with number prefix
+    print_team(team);
+
+    // Accept input (integer)
+    int user_selection;
+    cin >> user_selection;
+    Pokemon selected_pokemon = select_pokemon(team, user_selection);
+
+    // "Launch" Pokemon at from input (1-indexed)
+    launch(selected_pokemon); // "Launch" prints Pokemon's cry
+
+    return 0;
+}
+```
