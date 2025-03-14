@@ -1,5 +1,6 @@
 ---
 slug: architecture
+title: Architecture
 ---
 
 # Software Architecture

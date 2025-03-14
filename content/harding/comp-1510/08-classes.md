@@ -1,5 +1,7 @@
 ---
 slug: classes
+title: Classes 1
+weight: 7
 ---
 
 # Classes
@@ -37,11 +39,11 @@ private:
   // Turns back into private again below here
   int another_number;
   string generate_string() { return "Secret"; }
-}
+};
 
 ```
 
-## Examples
+## Example
 
 ```cpp
 class Pokemon {
@@ -73,22 +75,31 @@ int main() {
 
 C++ was designed to be an enhanced C language, and included classes as one of its core features. [Wikipedia Link](https://en.wikipedia.org/wiki/C++)
 
-## Terminology
+## Classes Define Objects
 
-### Object
+1. **Object** — An code entity which encapsulates data and functions together.
+1. **Class** — The definition of an object's data & functions. The class is a data type, like `int` or `struct`.
 
-An code entity which encapsulates data and functions together. (What it is & what it does)
+```cpp
+class Tree {         // The Class
+    int height;
+    string genus;
+    string species;
+};
 
-### Class
+int main() {
+    Tree tree;       // The object
+    tree.height = 1; // Using the object
+}
 
-The definition of an object's data & functions. The class is a data type, like `int` or `struct`.
+```
 
-### Public & Private Keywords
+## Public & Private Keywords
 
-- Public data & functions can be accessed outside the class definition.
-- Private data & functions can only be accessed within the class definition.
+- **Public** — Public data & functions can be accessed outside the class definition.
+- **Private** — Private data & functions can only be accessed within the class definition.
 
-#### Example of `public` & `private` keywords
+## Example of `public` & `private` keywords
 
 This Tree class uses a private variable to ensure that the tree's height can only increase by calling the `.grow()` function. This is about the programmer's _intention_, not a technical requirement.
 
@@ -134,12 +145,34 @@ int main() {
 }
 ```
 
-### Mutator & Accessor
+## Mutator & Accessor
 
-- A **mutator** is a method which changes the value of a class's data member. A **setter** is a subset of mutator which directly corresponds to a specific data member.
-- An **accessor** is a method which returns the value of a class's data member. A **getter** is a subset of accessor which directly corresponds to a specific data member. Often declared `const`.
+- A **mutator** method changes the value of a class's data member. A **setter** is a subset of mutator which directly corresponds to a specific data member.
+- An **accessor** method returns the value of a class's data member, but _does not change it_. A **getter** is a subset of accessor which directly corresponds to a specific data member. Usually marked `const`.
 
-#### Example of Getter & Setter
+### `const`
+
+Methods may be marked `const` to prevent the function from modifying the class at all. The compiler will enforce this. (This is different from returning a `const` data type.)
+
+```cpp
+class Example {
+public:
+// ...
+  int get_num() const { return number; } // const goes after the parameter list
+// ...
+};
+```
+
+|          | Can it Modify a Class? | Does it Return a Value? | Does it Match a Single Property? | Usually `const`? |
+| :------: | :--------------------: | :---------------------: | :------------------------------: | ---------------- |
+| Accessor |           ✕            |           ✔︎           |                ✕                 | ✔︎              |
+|  Getter  |           ✕            |           ✔︎           |               ✔︎                | ✔︎              |
+| Mutator  |          ✔︎           |            ✕            |                ✕                 | ✕                |
+|  Setter  |          ✔︎           |            ✕            |               ✔︎                | ✕                |
+
+![Accessors are a superset of Getters, and Mutators are a superset of Setters](/mutator-accessor.svg)
+
+## Example of Getter & Setter
 
 This version of Pokemon class has a set of up to four moves. This setter prevents too many from being added, which would not be possible if the `.moves` data member was `public`, since the caller could simply use `.moves.push_back("another")`
 
@@ -147,7 +180,6 @@ This version of Pokemon class has a set of up to four moves. This setter prevent
 const int MAX_MOVES = 4;
 
 class Pokemon {
-
 public:
   int number;
   string name;
@@ -167,7 +199,7 @@ public:
     moves.at(position) = move_name;
   }
 
-  string get_move(int position) {
+  string get_move(int position) const { // `const` ensures no mutations occur
     // Ignore invalid positions
     if (position < 0 || position > MAX_MOVES - 1) {
       return "";
@@ -181,21 +213,55 @@ private:
 };
 ```
 
-### Private Helper Function
+## Private Helper Function
 
-A **private helper function** is a class's function which is not accessible outside the class definition (private). It is used within the class by other public or private methods.
+A **private helper function** is simply a `private` function that is used within the class by other public or private methods.
 
-### Scope Resolution Operator (`::`)
+```cpp
+class RightTriangle {
+    public:
+        void set_base(double length) { base = length; }
+        void set_height(double length) { height = length; }
+        // Only concerned with "getting"
+        double area() { return calculate_area(); }
+    private:
+        double base;
+        double height;
+        // Only concerned with "calculating"
+        double calculate_area() {
+            return (base * height) / 2
+        };
+};
+```
 
-The **scope resolution operator** distinguishes entities by the location of their definition (library, namespace, class, etc.).
+## Class Property Initialization
 
-### Inline Member Function
+Class data members can have a default value provided in the class definition.
 
-An **inline member function** is a function in a class definition that is within the class declaration.
+If the property is **initialized** in the class, every object's data member will have the provided value when the object is declared.
 
-## Usage
+```cpp
+
+class Tree {
+public:
+    string genus;
+    string species;
+    double height_in_meters = 0; // initialized to 0
+
+    // ...
+};
+
+int main() {
+    Tree tree1;                           // height is 0
+    Tree tree2 = {"Quercus", "rubra", 2}; // height is 2
+    Tree tree3 = {"Quercus", "rubra"};    // height is 0
+    tree1.height_in_meters = 100;         // height is 100
+}
+```
 
 ## Example Program: Toward a Pokémon Battle Clone
+
+_Work in Progress_
 
 ```cpp
 

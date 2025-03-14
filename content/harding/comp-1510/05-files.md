@@ -1,5 +1,7 @@
 ---
 slug: files
+title: Files
+weight: 5
 ---
 
 # File Input/Output

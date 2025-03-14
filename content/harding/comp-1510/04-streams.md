@@ -1,5 +1,7 @@
 ---
 slug: streams
+title: Streams
+weight: 4
 ---
 
 # Streams

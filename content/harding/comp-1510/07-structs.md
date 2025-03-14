@@ -1,5 +1,7 @@
 ---
 slug: structs
+title: Structs
+weight: 6
 ---
 
 # Structs
@@ -442,7 +444,7 @@ struct Pokemon {
     string cry;
 };
 
-// stucts go above functions
+// structs go above functions
 
 // Print each Pokemon in the with a number prefix
 void print_team(const vector<Pokemon> pokemon_team) {
