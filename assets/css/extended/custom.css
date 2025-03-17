@@ -1,9 +1,23 @@
+/* Switch Code Syntax Highlighting between Dark/Light Mode
+   Colors should be high-contrast for good display on a low-resolution projector */
+
 /* Choose my own code block colors because the PaperMod theme
    turns off the Chroma backgrounds with !important (why??),
    so we have to override the override. */
-:root {
+body:not(.dark) {
     --code-block-bg: ghostwhite;
 }
 .dark {
     --code-block-bg: black;
+}
+
+/* Add missing colors to the `pygments` Chroma stylesheet. Why are they missing?? */
+body:not(.dark) .chroma .n {
+    color: #4a4a4a; /* Name */
+}
+body:not(.dark) .chroma .p {
+    color: #4a4a4a; /* Punctuation */
+}
+.dark .chroma .n {
+    color: white;/* Name */
 }

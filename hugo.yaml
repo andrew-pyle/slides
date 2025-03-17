@@ -15,7 +15,6 @@ params:
   assets:
     disableHLJS: true
   ShowToc: true
-  disableThemeToggle: true
   ShowBreadCrumbs: true
   footer:
     HideCopyright: true
