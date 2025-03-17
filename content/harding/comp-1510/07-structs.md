@@ -350,6 +350,55 @@ Moves:
         3) bug bite
 ```
 
+## Example: Point Struct
+
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Point {
+  int x;
+  int y;
+};
+
+// Translate Point by mutating the argument Point
+void translate_x(Point &p, int magnitude) {
+  // Mutates the argument p (no return statement).
+  p.x += magnitude;
+}
+
+// Translate Point by returning a new Point
+Point translate_y(const Point &p, int magnitude) {
+  // Returns a new Point made by copying the fields of p
+  return {p.x, p.y + magnitude};
+}
+
+int main() {
+  Point p1 = {1, 1};
+
+  // Modify & Output p1
+  cout << '(' << p1.x << ',' << p1.y << ')';
+  cout << " → ";
+  translate_x(p1, 1);
+  cout << '(' << p1.x << ',' << p1.y << ')' << endl;
+
+  // Modify & Output p2
+  Point p2 = {1, 1};
+  cout << '(' << p2.x << ',' << p2.y << ')';
+  cout << " → ";
+  // Returns a copy of p2, which we call p3
+  Point p3 = translate_y(p2, -5);
+  cout << '(' << p3.x << ',' << p3.y << ')' << endl;
+}
+```
+
+Output
+
+```
+(1,1) → (2,1)
+(1,1) → (1,-4)
+```
+
 ## Example Program: Pokémon Team
 
 1. Create a team of Pokémon
