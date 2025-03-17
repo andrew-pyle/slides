@@ -259,6 +259,61 @@ int main() {
 }
 ```
 
+## Example: Tree Class
+
+Write a class `Tree` which has private data members `genus`, `species`, & `age` and has getters and setters for each private data member. The appropriate methods should be marked `const`. Initialize `age` to zero.
+
+In the main function, create a `Tree` object, set all its data members, and output them to `cout`.
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Tree {
+public:
+  // Getters can be `const` because they don't need to change any
+  // data members of the class
+
+  // Getter & Setter for Genus
+  string get_genus() const { return genus; }
+  void set_genus(string g) { genus = g; }
+
+  // Getter & Setter for Species
+  string get_species() const { return species; }
+  void set_species(string s) { species = s; }
+
+  // Getter & Setter for Age
+  int get_age() const { return age; }
+  void set_age(int a) { age = a; }
+
+private:
+  // Private data members
+  string genus;
+  string species;
+  int age = 0;
+};
+
+int main() {
+  // Declare the Tree object
+  Tree oak;
+
+  // Set the Tree object's properties
+  oak.set_genus("Quercus");
+  oak.set_species("rubra");
+
+  // Output
+  cout << oak.get_genus() << " " << oak.get_species()
+       << ". Age: " << oak.get_age() << endl;
+}
+```
+
+Output
+
+```
+Quercus rubra. Age: 0
+```
+
 ## Example Program: Toward a Pokémon Battle Clone
 
 _Work in Progress_
