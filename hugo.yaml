@@ -6,8 +6,14 @@ author: Andrew Pyle
 enableRobotsTXT: true
 enableGitInfo: true
 title: Presentations
+markup:
+  highlight:
+    noClasses: false
+    lineNos: true
 theme: ["PaperMod"]
 params:
+  assets:
+    disableHLJS: true
   ShowToc: true
   ShowBreadCrumbs: true
   footer:

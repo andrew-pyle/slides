@@ -1,0 +1,9 @@
+/* Choose my own code block colors because the PaperMod theme
+   turns off the Chroma backgrounds with !important (why??),
+   so we have to override the override. */
+:root {
+    --code-block-bg: ghostwhite;
+}
+.dark {
+    --code-block-bg: black;
+}
