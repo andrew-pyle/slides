@@ -105,44 +105,73 @@ This Tree class uses a private variable to ensure that the tree's height can onl
 
 ```cpp
 class Tree {
-  // This attribute is private
-  int height_in_meters = 0;
-
 public:
-  double grow_rate;
+  // Class users cause `height_in_meters` to change by calling .grow()
+  void grow() { height_in_meters += 2; }
 
-  void grow() { height_in_meters = 2 * (1 + grow_rate); }
-
+  // Use height_in_meters to output a picture of the tree's current height.
   void print() {
-    cout << "  ___  " << endl;
-    cout << " /   \\ " << endl;
-    cout << "|     |" << endl;
-    cout << " \\___/ " << endl;
+    cout << "    @@@@@@   " << endl;
+    cout << "  @........@ " << endl;
+    cout << "@............@" << endl;
+    cout << "@............@" << endl;
+    cout << "@............@" << endl;
+    cout << "  @........@  " << endl;
+    // cout << "      ||      " << endl;
     for (int i = 0; i < height_in_meters; ++i) {
-      cout << "   |  " << endl;
+      cout << "      ||    " << endl;
     }
-    cout << "   |  " << endl;
-    cout << "~~~~~~~~" << endl;
+    cout << "~~~~~~~~~~~~~~" << endl;
   }
+
+private:
+  int height_in_meters = 0;
 };
 
 int main() {
-    Tree tree;
-    tree.grow_rate = 0.5;
+  Tree tree;
 
-    cout << "Start" << endl;
-    tree.print();
+  // ❌ error: 'height_in_meters' is a private member of 'Tree'
+  tree.height_in_meters = 44;
 
-    // Tree grows!
-    cout << "After Year 1" << endl;
-    tree.grow();
-    tree.print();
+  // Tree gets taller.
+  tree.grow();
+  cout << "After Year 1" << endl << endl;
+  tree.print();
 
-    // Tree grows!
-    cout << "After Year 2" << endl;
-    tree.grow();
-    tree.print();
+  // Tree gets even taller.
+  tree.grow();
+  cout << "After Year 2" << endl;
+  tree.print();
 }
+```
+
+Output (if the error is removed)
+
+```
+After Year 1
+    @@@@@@
+  @........@
+@............@
+@............@
+@............@
+  @........@
+      ||
+      ||
+~~~~~~~~~~~~~~
+
+After Year 2
+    @@@@@@
+  @........@
+@............@
+@............@
+@............@
+  @........@
+      ||
+      ||
+      ||
+      ||
+~~~~~~~~~~~~~~
 ```
 
 ## Mutator & Accessor
@@ -150,7 +179,7 @@ int main() {
 - A **mutator** method changes the value of a class's data member. A **setter** is a subset of mutator which directly corresponds to a specific data member.
 - An **accessor** method returns the value of a class's data member, but _does not change it_. A **getter** is a subset of accessor which directly corresponds to a specific data member. Usually marked `const`.
 
-### `const`
+### Using const
 
 Methods may be marked `const` to prevent the function from modifying the class at all. The compiler will enforce this. (This is different from returning a `const` data type.)
 
@@ -219,19 +248,21 @@ A **private helper function** is simply a `private` function that is used within
 
 ```cpp
 class RightTriangle {
-    public:
-        void set_base(double length) { base = length; }
-        void set_height(double length) { height = length; }
-        // Only concerned with "getting"
-        double area() { return calculate_area(); }
-    private:
-        double base;
-        double height;
-        // Only concerned with "calculating"
-        double calculate_area() {
-            return (base * height) / 2
-        };
+public:
+  void set_base(double length) { base = length; }
+  void set_height(double length) { height = length; }
+
+  // Only concerned with "getting"
+  double area() { return calculate_area(); }
+
+private:
+  double base;
+  double height;
+
+  // Only concerned with "calculating"
+  double calculate_area() { return (base * height) / 2; }
 };
+
 ```
 
 ## Class Property Initialization
