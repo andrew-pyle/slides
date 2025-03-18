@@ -4,8 +4,6 @@ title: Classes 1
 weight: 7
 ---
 
-# Classes
-
 ## Illustration
 
 ![Classes Model Real-World Entities: What it is & How it interacts with other entities](/class-illustration.svg)
@@ -13,34 +11,33 @@ weight: 7
 ## Syntax
 
 ```cpp
-class Name {
-  // attributes
-  int number_field;
-  int sometimes_called_properties;
-  int or_fields;
-  vector<string> or_attributes;
-
+class Example {
 public:
-  // attributes
+  // Public Data Members
+  // Sometimes called: attributes, properties, or fields
   int count;
 
-  // functions
-  void public_member_function() { cout << "Hello"; }
-  int sometimes_called_methods() { return number_field; }
-  string longer_body(int count) {
-    string out;
-    for (int i = 0; i < count; ++i) {
-      out += generate_string() + " ";
-    }
-    return out;
-  }
+  // Public Member Functions
+  // Sometimes called: Methods, Class Functions
+  void greet() { cout << "Hello"; }
+
+  // Accessor
+  double get_length() { return length; }
+  string get_secret() { return generate_secret(); }
+
+  // Mutator
+  void set_length(double l) { length = l; }
 
 private:
-  // Turns back into private again below here
-  int another_number;
-  string generate_string() { return "Secret"; }
-};
+  // Private Data Members
+  // Sometimes called: attributes, properties, or fields
+  string name;
+  double length;
 
+  // Private Member Functions
+  // Sometimes called: Private Helper Functions
+  string generate_secret() { return name + " Secret Suffix"; }
+};
 ```
 
 ## Example
