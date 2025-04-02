@@ -95,3 +95,144 @@ int main() {
 ```cpp
 // Implement the Triangle class's methods
 ```
+
+### Example: Separating a Class into a header and Implementation Files
+
+Let's separate the following program into 3 files:
+
+- `main.cpp`
+- `Pokemon.h`
+- `Pokemon.cpp`
+
+#### Entire Program
+
+```cpp
+#include <iomanip>
+#include <iostream>
+#include <sstream>
+using namespace std;
+
+class Pokemon {
+public:
+  string get_name() const { return name; }
+  string get_type() const { return type; }
+  double get_attack() const { return attack; }
+  double get_defense() const { return defense; }
+
+  void set_name(string n) { name = n; }
+  void set_type(string t) { type = t; }
+  void set_attack(double value) { attack = value; }
+  void set_defense(double value) { defense = value; }
+
+  string format() const {
+    ostringstream buffer;
+    buffer << setw(9) << "Pokemon: " << name << "\n"
+           << setw(9) << "Type: " << type << "\n"
+           << setw(9) << "Attack: " << attack << "\n"
+           << setw(9) << "Defense: " << defense << "\n";
+
+    return buffer.str();
+  }
+
+private:
+  string name;
+  string type;
+  double attack;
+  double defense;
+};
+
+int main() {
+  Pokemon bulbasaur;
+
+  bulbasaur.set_name("Bulbasaur");
+  bulbasaur.set_type("Grass/Poison");
+  bulbasaur.set_attack(15);
+  bulbasaur.set_defense(20);
+
+  cout << bulbasaur.format();
+}
+```
+
+#### Separated Into Files
+
+`main.cpp`
+This file will include the `Pokemon.h` header file and use the `Pokemon` class. Here we create a `Pokemon` object, set its properties, and output it to `cout`.
+
+```cpp
+#include "Pokemon.h"
+#include <iostream>
+using namespace std;
+
+int main() {
+  Pokemon bulbasaur;
+
+  bulbasaur.set_name("Bulbasaur");
+  bulbasaur.set_type("Grass/Poison");
+  bulbasaur.set_attack(15);
+  bulbasaur.set_defense(20);
+
+  cout << bulbasaur.format();
+}
+```
+
+`Pokemon.h`
+
+This file will have the class's data members and only **declarations** of the class methods. Here we simply have some getters, setters, and a format method.
+
+```cpp
+#include <string>
+using namespace std;
+
+class Pokemon {
+public:
+  string get_name() const;
+  string get_type() const;
+  double get_attack() const;
+  double get_defense() const;
+
+  void set_name(string name);
+  void set_type(string type);
+  void set_attack(double value);
+  void set_defense(double value);
+
+  string format() const;
+
+private:
+  string name;
+  string type;
+  double attack;
+  double defense;
+};
+```
+
+`Pokemon.cpp`
+
+This file will contain the class's method **definitions**, or implementations. Here we define the getters, setters, and the format method.
+
+```cpp
+#include "Pokemon.h"
+#include <iomanip>
+#include <sstream>
+#include <string>
+using namespace std;
+
+string Pokemon::get_name() const { return name; }
+string Pokemon::get_type() const { return type; }
+double Pokemon::get_attack() const { return attack; }
+double Pokemon::get_defense() const { return defense; }
+
+void Pokemon::set_name(string n) { name = n; }
+void Pokemon::set_type(string t) { type = t; }
+void Pokemon::set_attack(double value) { attack = value; }
+void Pokemon::set_defense(double value) { defense = value; }
+
+string Pokemon::format() const {
+  ostringstream buffer;
+  buffer << setw(9) << "Pokemon: " << name << "\n"
+         << setw(9) << "Type: " << type << "\n"
+         << setw(9) << "Attack: " << attack << "\n"
+         << setw(9) << "Defense: " << defense << "\n";
+
+  return buffer.str();
+}
+```
