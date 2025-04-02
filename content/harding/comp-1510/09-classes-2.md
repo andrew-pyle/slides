@@ -53,7 +53,7 @@ For a class, we can separate the **header** file from the implementation. Conven
 - `Class.h` — header file contains method **declarations**.
 - `Class.cpp` — implementation file contains method **definitions**.
 
-### Exercise: Working with Another Programmer
+## Exercise: Working with Another Programmer
 
 Let's simulate a team context. You are a member of a programming team. You have received a header file from the project's software architect. The software must adhere to this design.
 
@@ -96,7 +96,7 @@ int main() {
 // Implement the Triangle class's methods
 ```
 
-### Example: Separating a Class into a header and Implementation Files
+## Example: Separating a Class into a header and Implementation Files
 
 Let's separate the following program into 3 files:
 
@@ -104,7 +104,7 @@ Let's separate the following program into 3 files:
 - `Pokemon.h`
 - `Pokemon.cpp`
 
-#### Entire Program
+### Entire Program
 
 ```cpp
 #include <iomanip>
@@ -153,10 +153,11 @@ int main() {
 }
 ```
 
-#### Separated Into Files
+### Separated Into Files
 
-`main.cpp`
 This file will include the `Pokemon.h` header file and use the `Pokemon` class. Here we create a `Pokemon` object, set its properties, and output it to `cout`.
+
+#### main.cpp
 
 ```cpp
 #include "Pokemon.h"
@@ -175,7 +176,7 @@ int main() {
 }
 ```
 
-`Pokemon.h`
+#### Pokemon.h
 
 This file will have the class's data members and only **declarations** of the class methods. Here we simply have some getters, setters, and a format method.
 
@@ -205,7 +206,7 @@ private:
 };
 ```
 
-`Pokemon.cpp`
+#### Pokemon.cpp
 
 This file will contain the class's method **definitions**, or implementations. Here we define the getters, setters, and the format method.
 
@@ -234,5 +235,49 @@ string Pokemon::format() const {
          << setw(9) << "Defense: " << defense << "\n";
 
   return buffer.str();
+}
+```
+
+## Exercise: Using a Constructor to Set Private Fields
+
+If a programmer wants the users of a class to manipulate the value of a class field, she can simply make that field `public`.
+
+On the other hand, if a programmer does not want the users of a class to manipulate the value of a class field, she would make that field `private`.
+
+However, a programmer may wish for a user to set the value of a class field, but not make arbitrary changes. **In this situation, neither `public` nor `private` is sufficient.**
+
+To allow the desired behavior, a programmer may provide a **constructor** which sets an object's private fields without exposing the field as `public`
+
+Let's set the fields of a `Triangle` class with a constructor.
+
+```cpp
+class Triangle {
+public:
+  Triangle(double b, double h) {
+    base = b;
+    height = h;
+  }
+  double get_base() { return base; }
+  double get_height() { return height; }
+
+  // ❗️ Notice
+  // We do not need setters since the fields
+  // are set in the constructor
+
+private:
+  double base;
+  double height;
+};
+
+int main() {
+  Triangle t = Triangle(1, 2);
+
+  // The fields are not public...
+  cout << t.base; // ❌ Error: base is private
+  t.height = 1;   // ❌ Error: height is private
+
+  // ...but they contain the values provided to the constructor
+  cout << t.get_base();   // outputs: 1
+  cout << t.get_height(); // outputs: 2
 }
 ```
