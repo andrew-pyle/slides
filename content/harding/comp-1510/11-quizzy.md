@@ -55,7 +55,7 @@ public:
 };
 ```
 
-## Functions are used where appropriate
+## Functions are Used where Appropriate
 
 Functions can group a "feature" of your program into a single line.
 
@@ -92,7 +92,7 @@ int main() {
 }
 ```
 
-## Functions are appropriate length
+## Functions are Appropriate Length
 
 It should be possible to read the body of a function without scrolling up and down. (No example)
 
@@ -138,7 +138,7 @@ int main() {
 }
 ```
 
-## Whitespace & indentation is Consistent
+## Whitespace & Indentation is Consistent
 
 Whether it is 4 spaces, 2 spaces, or 1 tab, use the same level of indentation from the left for each level.
 
