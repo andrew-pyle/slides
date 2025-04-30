@@ -138,7 +138,7 @@ int main() {
 }
 ```
 
-## Whitespace & indentation is consistent
+## Whitespace & indentation is Consistent
 
 Whether it is 4 spaces, 2 spaces, or 1 tab, use the same level of indentation from the left for each level.
 
